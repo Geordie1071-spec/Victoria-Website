@@ -1,6 +1,3 @@
-// app/landmarks/[slug]/page.tsx
-"use client";
-
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { landmarks } from "@/app/lib/data";
