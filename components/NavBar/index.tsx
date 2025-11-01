@@ -42,10 +42,11 @@ export default function Navbar() {
   const [isMobileLandmarksOpen, setIsMobileLandmarksOpen] = useState(false);
   const landmarksRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
-  const navBackground = useTransform(
+  
+  const navShadow = useTransform(
     scrollY,
     [0, 100],
-    ["rgba(10, 10, 10, 0)", "rgba(10, 10, 10, 0.95)"]
+    ["0px 0px 0px rgba(0, 0, 0, 0)", "0px 4px 20px rgba(0, 0, 0, 0.15)"]
   );
 
   useEffect(() => {
@@ -81,23 +82,25 @@ export default function Navbar() {
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 backdrop-blur-md transition-colors duration-300 ${
+      <motion.nav
+        className={`fixed top-0 left-0 right-0 bg-white border-b border-gray-200 transition-all duration-300 ${
           isOpen ? "z-[60]" : "z-50"
         }`}
-        style={{ backgroundColor: navBackground as any }}
+        style={{ boxShadow: navShadow as any }}
       >
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <Link href="/" className="flex items-center gap-2">
-              <MapPin className="text-amber-500" size={28} />
-              <span className="text-2xl font-bold">
-                <GradientText>Victoria</GradientText>
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="p-2 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-lg group-hover:scale-110 transition-transform">
+                <MapPin className="text-white" size={24} />
+              </div>
+              <span className="text-2xl font-bold text-gray-900">
+                Victoria
               </span>
             </Link>
 
             <div
-              className="hidden md:flex items-center gap-8 relative"
+              className="hidden md:flex items-center gap-1 relative"
               ref={landmarksRef}
             >
               {navItems.map((item, i) => (
@@ -109,10 +112,9 @@ export default function Navbar() {
                 >
                   <Link
                     href={item.href}
-                    className="text-gray-300 hover:text-amber-400 font-medium relative group"
+                    className="px-4 py-2 text-gray-700 hover:text-amber-600 font-semibold rounded-lg hover:bg-amber-50 transition-all relative group"
                   >
                     {item.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 group-hover:w-full transition-all duration-300" />
                   </Link>
                 </motion.div>
               ))}
@@ -123,10 +125,15 @@ export default function Navbar() {
                 onMouseEnter={() => setIsLandmarksHovered(true)}
                 onMouseLeave={() => setIsLandmarksHovered(false)}
               >
-                <div className="text-gray-300 hover:text-amber-400 font-medium relative group cursor-pointer">
+                <button className="px-4 py-2 text-gray-700 hover:text-amber-600 font-semibold rounded-lg hover:bg-amber-50 transition-all flex items-center gap-1">
                   Landmarks
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 group-hover:w-full transition-all duration-300" />
-                </div>
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform duration-200 ${
+                      isLandmarksHovered ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
 
                 <AnimatePresence>
                   {isLandmarksHovered && (
@@ -135,27 +142,38 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute left-0 mt-2 w-56 bg-gray-900/90 backdrop-blur-md rounded-lg shadow-lg py-2 z-50"
+                      className="absolute left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50 overflow-hidden"
                     >
-                      {landmarks.map((landmark) => (
+                      {landmarks.map((landmark, idx) => (
                         <Link
                           key={landmark.slug}
                           href={`/landmarks/${landmark.slug}`}
-                          className="block px-4 py-2 text-gray-300 hover:text-amber-400 hover:bg-gray-800/50 transition-colors"
+                          className="block px-4 py-3 text-gray-700 hover:text-amber-600 hover:bg-amber-50 transition-colors font-medium"
                           onClick={() => setIsLandmarksHovered(false)}
                         >
-                          {landmark.name}
+                          <div className="flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                            {landmark.name}
+                          </div>
                         </Link>
                       ))}
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
+
+              {/* CTA Button */}
+              <Link
+                href="/reviews"
+                className="ml-4 px-6 py-2.5 bg-gradient-to-r from-amber-400 to-yellow-500 text-white font-bold rounded-lg hover:from-amber-500 hover:to-yellow-600 shadow-md hover:shadow-lg transform hover:scale-105 transition-all"
+              >
+                Leave Review
+              </Link>
             </div>
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-amber-400 rounded"
+              className="md:hidden text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-400 rounded-lg p-2 hover:bg-gray-100 transition-colors"
               aria-label={
                 isOpen ? "Close navigation menu" : "Open navigation menu"
               }
@@ -186,14 +204,14 @@ export default function Navbar() {
             </button>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             key="mobile-nav"
-            className="fixed inset-0 bg-black/50 flex flex-col items-center justify-center space-y-8 text-3xl font-bold text-white md:hidden z-[55]"
+            className="fixed inset-0 bg-white flex flex-col items-center justify-center space-y-6 md:hidden z-[55]"
             initial="hidden"
             animate="show"
             exit="exit"
@@ -204,7 +222,7 @@ export default function Navbar() {
               <motion.div key={item.href} variants={itemElement}>
                 <Link
                   href={item.href}
-                  className="hover:text-amber-300 transition-colors"
+                  className="text-3xl font-bold text-gray-900 hover:text-amber-600 transition-colors"
                   onClick={(e) => {
                     e.stopPropagation();
                     setIsOpen(false);
@@ -218,7 +236,7 @@ export default function Navbar() {
             {/* Mobile Landmarks Dropdown */}
             <motion.div variants={itemElement} className="relative">
               <button
-                className="hover:text-amber-300 transition-colors flex items-center gap-2"
+                className="text-3xl font-bold text-gray-900 hover:text-amber-600 transition-colors flex items-center gap-2"
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsMobileLandmarksOpen(!isMobileLandmarksOpen);
@@ -239,14 +257,14 @@ export default function Navbar() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="mt-4 space-y-3 text-2xl overflow-hidden"
+                    className="mt-4 space-y-3 text-xl overflow-hidden"
                     onClick={(e) => e.stopPropagation()}
                   >
                     {landmarks.map((landmark) => (
                       <Link
                         key={landmark.slug}
                         href={`/landmarks/${landmark.slug}`}
-                        className="block hover:text-amber-300 transition-colors pl-4 pr-2 border-2 rounded-lg text-sm"
+                        className="block text-gray-700 hover:text-amber-600 transition-colors px-6 py-3 bg-gray-50 rounded-lg font-semibold"
                         onClick={handleMobileLandmarkClick}
                       >
                         {landmark.name}
@@ -255,6 +273,20 @@ export default function Navbar() {
                   </motion.div>
                 )}
               </AnimatePresence>
+            </motion.div>
+
+            {/* Mobile CTA */}
+            <motion.div variants={itemElement}>
+              <Link
+                href="/reviews"
+                className="px-8 py-4 bg-gradient-to-r from-amber-400 to-yellow-500 text-white font-bold rounded-xl text-xl shadow-lg"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsOpen(false);
+                }}
+              >
+                Leave Review
+              </Link>
             </motion.div>
           </motion.div>
         )}
