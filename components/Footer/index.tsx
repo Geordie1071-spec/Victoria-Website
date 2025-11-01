@@ -36,7 +36,6 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Info / Sources */}
           <p className="text-sm text-gray-500 mb-4">
             Information sourced from local archives and{' '}
             <a
@@ -50,7 +49,6 @@ export default function Footer() {
             .
           </p>
 
-          {/* Copyright */}
           <p className="text-xs text-gray-600">
             © 2025 Discover Victoria, Gozo. All rights reserved.
           </p>

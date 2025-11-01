@@ -37,7 +37,6 @@ export default function Navbar() {
   const { scrollY } = useScroll();
   const navBackground = useTransform(scrollY, [0, 100], ['rgba(10, 10, 10, 0)', 'rgba(10, 10, 10, 0.95)']);
 
-  // Close on resize to desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) setIsOpen(false);
@@ -48,7 +47,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Navbar — raised above overlay when open */}
       <nav
         className={`fixed top-0 left-0 right-0 backdrop-blur-md transition-colors duration-300 ${
           isOpen ? 'z-[60]' : 'z-50'
@@ -64,7 +62,6 @@ export default function Navbar() {
               </span>
             </Link>
 
-            {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-8">
               {navItems.map((item, i) => (
                 <motion.a
@@ -81,7 +78,6 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Mobile Menu Button — always visible and clickable */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-amber-400 rounded"
@@ -115,7 +111,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Full-screen Mobile Overlay — below navbar when open */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -125,7 +120,6 @@ export default function Navbar() {
             animate="show"
             exit="exit"
             variants={container}
-            // Optional: close when clicking backdrop
             onClick={() => setIsOpen(false)}
           >
             {navItems.map((item) => (
@@ -134,7 +128,7 @@ export default function Navbar() {
                   href={item.href}
                   className="hover:text-amber-300 transition-colors"
                   onClick={(e) => {
-                    e.stopPropagation(); // prevent closing on link click
+                    e.stopPropagation(); 
                     setIsOpen(false);
                   }}
                 >
