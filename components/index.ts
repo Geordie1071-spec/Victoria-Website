@@ -3,3 +3,4 @@ export { default as HeroSection } from "./HeroSection";
 export { default as Navbar } from "./NavBar";
 export { default as Footer } from "./Footer";
 export { default as History } from "./HistoryMain";
+export { default as ReviewMain } from "./ReviewsMain";
