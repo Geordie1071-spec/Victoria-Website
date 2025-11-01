@@ -1,10 +1,8 @@
-'use client';
+"use client";
 
-import { useRef } from 'react';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
-import AnimatedButton from '../AnimatedButton';
-import GlassEffectBadge from '../GlassEffectBadge';
-import GradientText from '../GradientText';
+import { useRef } from "react";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import AnimatedButton from "../AnimatedButton";
 
 interface Landmark {
   id: number;
@@ -12,7 +10,7 @@ interface Landmark {
   slug: string;
   description: string;
   image: string;
-  position: 'left' | 'right';
+  position: "left" | "right";
 }
 
 interface LandmarkSectionProps {
@@ -20,32 +18,52 @@ interface LandmarkSectionProps {
   index: number;
 }
 
-export default function LandmarkSection({ landmark, index }: LandmarkSectionProps) {
+export default function LandmarkSection({
+  landmark,
+  index,
+}: LandmarkSectionProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: '-200px' });
+  const isInView = useInView(ref, { once: false, margin: "-200px" });
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'end start'],
+    offset: ["start end", "end start"],
   });
 
   const imageY = useTransform(scrollYProgress, [0, 1], [-100, 100]);
   const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.2, 1, 1.2]);
   const textY = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const textOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.8, 1],
+    [0, 1, 1, 0]
+  );
 
-  const isLeft = landmark.position === 'left';
+  const isLeft = landmark.position === "left";
 
   return (
-    <motion.section ref={ref} className="relative h-screen flex items-center justify-center overflow-hidden">
-      <motion.div className="absolute inset-0" style={{ y: imageY, scale: imageScale }}>
+    <motion.section
+      ref={ref}
+      className="relative h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Full Background Image with Parallax */}
+      <motion.div
+        className="absolute inset-0"
+        style={{ y: imageY, scale: imageScale }}
+      >
         <motion.div
           initial={{ scale: 1.3, opacity: 0 }}
-          animate={isInView ? { scale: 1, opacity: 1 } : { scale: 1.3, opacity: 0 }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
+          animate={
+            isInView ? { scale: 1, opacity: 1 } : { scale: 1.3, opacity: 0 }
+          }
+          transition={{ duration: 1.2, ease: "easeOut" }}
           className="w-full h-full"
         >
-          <img src={landmark.image} alt={landmark.name} className="w-full h-full object-cover" />
+          <img
+            src={landmark.image}
+            alt={landmark.name}
+            className="w-full h-full object-cover"
+          />
         </motion.div>
       </motion.div>
 
@@ -63,7 +81,7 @@ export default function LandmarkSection({ landmark, index }: LandmarkSectionProp
               }
             : {}
         }
-        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         className="absolute bottom-1/4 right-10 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl z-10"
@@ -75,22 +93,43 @@ export default function LandmarkSection({ landmark, index }: LandmarkSectionProp
               }
             : {}
         }
-        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1,
+        }}
       />
 
-      <motion.div className="relative z-20 max-w-6xl mx-auto px-6 md:px-12" style={{ y: textY, opacity: textOpacity }}>
-        <div className={`flex flex-col ${isLeft ? 'items-start text-left' : 'items-end text-right'}`}>
+      {/* Content Overlay */}
+      <motion.div
+        className="relative z-20 max-w-6xl mx-auto px-6 md:px-12"
+        style={{ y: textY, opacity: textOpacity }}
+      >
+        <div
+          className={`flex flex-col ${
+            isLeft ? "items-start text-left" : "items-end text-right"
+          }`}
+        >
+          {/* Landmark Number Badge */}
           <motion.div
             className="mb-6"
             initial={{ opacity: 0, scale: 0, rotate: -180 }}
-            animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : { opacity: 0, scale: 0, rotate: -180 }}
-            transition={{ duration: 0.8, delay: 0.2, type: 'spring' }}
+            animate={
+              isInView
+                ? { opacity: 1, scale: 1, rotate: 0 }
+                : { opacity: 0, scale: 0, rotate: -180 }
+            }
+            transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
           >
             <div className="w-24 h-24 rounded-full glass-effect flex items-center justify-center border-2 border-amber-500/30">
-              <span className="text-5xl font-bold gradient-text">{String(index + 1).padStart(2, '0')}</span>
+              <span className="text-5xl font-bold gradient-text">
+                {String(index + 1).padStart(2, "0")}
+              </span>
             </div>
           </motion.div>
 
+          {/* Title */}
           <motion.h2
             className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 max-w-4xl leading-tight"
             initial={{ opacity: 0, y: 50 }}
@@ -109,13 +148,18 @@ export default function LandmarkSection({ landmark, index }: LandmarkSectionProp
             {landmark.description}
           </motion.p>
 
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }} transition={{ duration: 0.8, delay: 0.7 }}>
-            <AnimatedButton href={`/landmark/${landmark.slug}`}>Discover More</AnimatedButton>
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+          >
+            <AnimatedButton href={`/landmarks/${landmark.slug}`}>
+              Discover More
+            </AnimatedButton>
           </motion.div>
         </div>
       </motion.div>
-
-      
     </motion.section>
   );
 }
