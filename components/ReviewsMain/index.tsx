@@ -24,7 +24,7 @@ export default function ReviewsMain({ initialReviews }: ReviewsMainProps) {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/reviews', {
+      const response = await fetch('https://victoria-website-chi.vercel.app/api/reviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
