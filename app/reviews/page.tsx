@@ -4,7 +4,7 @@ import { Navbar, ReviewsMain } from "@/components";
 
 async function getReviews(): Promise<Review[]> {
   try {
-    const response = await fetch('http://localhost:3000/api/reviews', {
+    const response = await fetch('https://victoria-website-chi.vercel.app/api/reviews', {
       cache: 'no-store', 
     });
     
