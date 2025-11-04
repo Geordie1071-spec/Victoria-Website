@@ -10,7 +10,7 @@ import {
 import { Menu, X, MapPin, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import GradientText from "../GradientText";
-import { landmarks } from "@/app/lib/data";
+import { landmarks } from "@/app/lib/landmarks";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -42,7 +42,7 @@ export default function Navbar() {
   const [isMobileLandmarksOpen, setIsMobileLandmarksOpen] = useState(false);
   const landmarksRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
-  
+
   const navShadow = useTransform(
     scrollY,
     [0, 100],
@@ -94,9 +94,7 @@ export default function Navbar() {
               <div className="p-2 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-lg group-hover:scale-110 transition-transform">
                 <MapPin className="text-white" size={24} />
               </div>
-              <span className="text-2xl font-bold text-gray-900">
-                Victoria
-              </span>
+              <span className="text-2xl font-bold text-gray-900">Victoria</span>
             </Link>
 
             <div

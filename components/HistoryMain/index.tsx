@@ -2,16 +2,23 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Calendar, Landmark, Shield, Crown, Building2, Sparkles } from "lucide-react";
+import {
+  Calendar,
+  Landmark,
+  Shield,
+  Crown,
+  Building2,
+  Sparkles,
+} from "lucide-react";
 
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15
-    }
-  }
+      staggerChildren: 0.15,
+    },
+  },
 };
 
 const timelineEvents = [
@@ -72,8 +79,9 @@ export default function HistoryMain() {
             History of Victoria
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover the rich tapestry of <span className="font-semibold text-amber-700">Rabat</span>, 
-            Gozo's timeless capital and living monument
+            Discover the rich tapestry of{" "}
+            <span className="font-semibold text-amber-700">Rabat</span>, Gozo's
+            timeless capital and living monument
           </p>
         </motion.div>
 
@@ -84,11 +92,13 @@ export default function HistoryMain() {
           className="bg-white rounded-3xl shadow-xl p-8 md:p-10 mb-12 border border-gray-100"
         >
           <p className="text-lg md:text-xl leading-relaxed text-gray-700">
-            <span className="font-bold text-amber-700 text-2xl">Victoria</span> — 
-            locally still often called <em className="text-amber-600 font-semibold">Rabat</em> — 
-            is Gozo's vibrant heart. The city rises around the fortified hilltop of the{" "}
-            <span className="font-bold text-gray-900">Ċittadella</span>, a living monument 
-            whose story spans from ancient temple builders to modern Maltese life.
+            <span className="font-bold text-amber-700 text-2xl">Victoria</span>{" "}
+            — locally still often called{" "}
+            <em className="text-amber-600 font-semibold">Rabat</em> — is Gozo's
+            vibrant heart. The city rises around the fortified hilltop of the{" "}
+            <span className="font-bold text-gray-900">Ċittadella</span>, a
+            living monument whose story spans from ancient temple builders to
+            modern Maltese life.
           </p>
         </motion.div>
 
@@ -133,11 +143,13 @@ export default function HistoryMain() {
               </h2>
             </div>
             <p className="text-lg leading-relaxed text-gray-700">
-              Gozo is one of the oldest continuously inhabited places in Europe. Long before Rome 
-              or the Knights, its people built the monumental <span className="font-bold">Ġgantija Temples</span> — 
-              proof of a sophisticated society active as far back as 3600 BCE. The hill where the 
-              Citadel now stands was sacred and strategic, later serving as a classical acropolis 
-              during the Phoenician and Roman eras.
+              Gozo is one of the oldest continuously inhabited places in Europe.
+              Long before Rome or the Knights, its people built the monumental{" "}
+              <span className="font-bold">Ġgantija Temples</span> — proof of a
+              sophisticated society active as far back as 3600 BCE. The hill
+              where the Citadel now stands was sacred and strategic, later
+              serving as a classical acropolis during the Phoenician and Roman
+              eras.
             </p>
           </motion.div>
 
@@ -152,10 +164,12 @@ export default function HistoryMain() {
               </h2>
             </div>
             <p className="text-lg leading-relaxed text-gray-700">
-              In ancient times, Gozo was known as <em className="text-purple-600 font-semibold">Gaulos</em>. 
-              Its acropolis evolved into a fortified stronghold through the Middle Ages, first documented 
-              in the 13th century. Over time, the lower settlement grew into{" "}
-              <span className="font-bold">Rabat</span>, forming the heart of the island's community.
+              In ancient times, Gozo was known as{" "}
+              <em className="text-purple-600 font-semibold">Gaulos</em>. Its
+              acropolis evolved into a fortified stronghold through the Middle
+              Ages, first documented in the 13th century. Over time, the lower
+              settlement grew into <span className="font-bold">Rabat</span>,
+              forming the heart of the island's community.
             </p>
           </motion.div>
 
@@ -170,25 +184,13 @@ export default function HistoryMain() {
               </h2>
             </div>
             <p className="text-lg leading-relaxed text-gray-700">
-              Positioned in the central Mediterranean, Gozo was frequently attacked by corsairs and 
-              invading fleets. Under the <span className="font-bold">Knights of St. John</span>, the 
-              Citadel's bastions and curtain walls were reinforced, shaping the fortress we see today. 
-              These fortifications served as both a refuge and symbol of resilience for Gozitans.
+              Positioned in the central Mediterranean, Gozo was frequently
+              attacked by corsairs and invading fleets. Under the{" "}
+              <span className="font-bold">Knights of St. John</span>, the
+              Citadel's bastions and curtain walls were reinforced, shaping the
+              fortress we see today. These fortifications served as both a
+              refuge and symbol of resilience for Gozitans.
             </p>
-          </motion.div>
-
-          {/* Image 2 */}
-          <motion.div
-           
-            className="relative overflow-hidden rounded-3xl shadow-xl"
-          >
-            <Image
-              src="/citadel-inside.jpg"
-              alt="Inside the Citadel, Victoria"
-              width={1200}
-              height={700}
-              className="w-full h-auto"
-            />
           </motion.div>
 
           {/* British Era */}
@@ -203,10 +205,12 @@ export default function HistoryMain() {
             </div>
             <p className="text-lg leading-relaxed text-gray-700">
               During British rule, Rabat was officially renamed{" "}
-              <span className="font-bold">Victoria</span> on 10 June 1887, to commemorate Queen 
-              Victoria's Golden Jubilee. The change united the Citadel and its surrounding suburbs 
-              under one name — though locals proudly continue to use{" "}
-              <em className="text-amber-600 font-semibold">Rabat</em> in everyday life.
+              <span className="font-bold">Victoria</span> on 10 June 1887, to
+              commemorate Queen Victoria's Golden Jubilee. The change united the
+              Citadel and its surrounding suburbs under one name — though locals
+              proudly continue to use{" "}
+              <em className="text-amber-600 font-semibold">Rabat</em> in
+              everyday life.
             </p>
           </motion.div>
 
@@ -221,25 +225,12 @@ export default function HistoryMain() {
               </h2>
             </div>
             <p className="text-lg leading-relaxed text-gray-700">
-              The 20th century brought modernization, new infrastructure, and restoration of historic 
-              sites. Today, Victoria stands as Gozo's administrative and cultural capital — a blend of 
-              medieval heritage and modern vibrancy. Its bustling squares, traditional festas, and 
+              The 20th century brought modernization, new infrastructure, and
+              restoration of historic sites. Today, Victoria stands as Gozo's
+              administrative and cultural capital — a blend of medieval heritage
+              and modern vibrancy. Its bustling squares, traditional festas, and
               timeless views from the Citadel capture the spirit of Gozo itself.
             </p>
-          </motion.div>
-
-          {/* Image 3 */}
-          <motion.div
-            
-            className="relative overflow-hidden rounded-3xl shadow-xl"
-          >
-            <Image
-              src="/independence-square.png"
-              alt="Pjazza Indipendenza (Independence Square), Victoria"
-              width={1200}
-              height={700}
-              className="w-full h-auto"
-            />
           </motion.div>
         </motion.div>
 
@@ -255,7 +246,7 @@ export default function HistoryMain() {
               Historical Timeline
             </h2>
           </div>
-          
+
           <div className="space-y-6">
             {timelineEvents.map((event, index) => {
               const Icon = event.icon;

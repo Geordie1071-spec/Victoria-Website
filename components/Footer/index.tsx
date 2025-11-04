@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import GradientText from '../GradientText';
+import { motion } from "framer-motion";
+import GradientText from "../GradientText";
 
 export default function Footer() {
   return (
-    <footer className="relative py-20 px-4 border-t border-gray-800 bg-gradient-to-b from-gray-950 to-gray-900">
-      <div className="max-w-7xl mx-auto text-center text-gray-400">
+    <footer className="relative py-20 px-4 border-t border-yellow-800 bg-white">
+      <div className="max-w-7xl mx-auto text-center text-yellow-400">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -17,39 +17,42 @@ export default function Footer() {
             <GradientText>Discover Victoria, Gozo</GradientText>
           </h3>
 
-          <p className="text-gray-400 text-lg mb-8 italic">
+          <p className="text-yellow-400 text-lg mb-8 italic">
             Celebrating the heart of Gozo — its culture, history, and charm.
           </p>
 
           {/* Quick Navigation */}
           <div className="mb-6 space-x-4 text-sm">
-            <a href="#landmarks" className="hover:text-gray-200 transition-colors">
-              Landmarks
-            </a>
-            <span className="text-gray-600">·</span>
-            <a href="#history" className="hover:text-gray-200 transition-colors">
+            <span className="text-yellow-600">·</span>
+            <a
+              href="/history"
+              className="hover:text-yellow-200 transition-colors"
+            >
               History
             </a>
-            <span className="text-gray-600">·</span>
-            <a href="#gallery" className="hover:text-gray-200 transition-colors">
-              Gallery
+            <span className="text-yellow-600">·</span>
+            <a
+              href="/reviews"
+              className="hover:text-yellow-200 transition-colors"
+            >
+              Reviews
             </a>
           </div>
 
-          <p className="text-sm text-gray-500 mb-4">
-            Information sourced from local archives and{' '}
+          <p className="text-sm text-yellow-500 mb-4">
+            Information sourced from local archives and{" "}
             <a
               href="https://www.visitgozo.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline hover:text-gray-300"
+              className="underline hover:text-yellow-300"
             >
               visitgozo.com
             </a>
             .
           </p>
 
-          <p className="text-xs text-gray-600">
+          <p className="text-xs text-yellow-600">
             © 2025 Discover Victoria, Gozo. All rights reserved.
           </p>
         </motion.div>

@@ -1,4 +1,3 @@
-// app/landmarks/[slug]/LandmarkDetail.tsx
 "use client";
 
 import Image from "next/image";
@@ -82,9 +81,7 @@ export default function LandmarkDetail({ landmark }: Props) {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-              <h1 className="text-5xl font-bold mb-3 drop-shadow-lg">
-                {name}
-              </h1>
+              <h1 className="text-5xl font-bold mb-3 drop-shadow-lg">{name}</h1>
               <p className="text-xl font-medium drop-shadow-md max-w-3xl">
                 {description}
               </p>

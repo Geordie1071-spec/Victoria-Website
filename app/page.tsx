@@ -1,8 +1,8 @@
-import HomeClient from "@/components/HomeClient"; // Adjust the path according to your structure
+import HomeClient from "@/components/HomeClient";
 
 export default function Home() {
   return (
-    <main className="bg-black">
+    <main className="bg-white">
       <HomeClient />
     </main>
   );

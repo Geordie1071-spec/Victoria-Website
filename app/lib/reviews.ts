@@ -1,5 +1,3 @@
-// app/lib/reviews.ts
-
 export interface Review {
   id: string;
   name: string;
