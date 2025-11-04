@@ -1,7 +1,7 @@
 "use client";
 
 import { LandmarkSection, HeroSection, Navbar, Footer } from "@/components";
-import { landmarks } from "@/app/lib/landmarks";
+import { landmarks } from "@/data/landmarks";
 
 export default function HomeClient() {
   return (

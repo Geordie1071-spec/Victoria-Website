@@ -10,7 +10,7 @@ import {
 import { Menu, X, MapPin, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import GradientText from "../GradientText";
-import { landmarks } from "@/app/lib/landmarks";
+import { landmarks } from "@/data/landmarks";
 
 const navItems = [
   { href: "/", label: "Home" },

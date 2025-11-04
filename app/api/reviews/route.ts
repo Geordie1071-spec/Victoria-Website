@@ -1,10 +1,15 @@
-// app/api/reviews/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
-import { Review } from "@/app/lib/reviews";
 
 const DATA_FILE = path.join(process.cwd(), "data", "reviews.json");
+
+export interface Review {
+  id: string;
+  name: string;
+  content: string;
+  createdAt: string;
+}
 
 async function ensureDataDirectory() {
   const dataDir = path.join(process.cwd(), "data");
@@ -35,6 +40,7 @@ export async function GET() {
     const reviews = await readReviews();
     return NextResponse.json(reviews);
   } catch (error) {
+    console.error("Error in GET /api/reviews:", error);
     return NextResponse.json(
       { error: "Failed to fetch reviews" },
       { status: 500 }

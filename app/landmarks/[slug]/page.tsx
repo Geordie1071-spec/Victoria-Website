@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { landmarks } from "@/app/lib/landmarks";
+import { landmarks } from "@/data/landmarks";
 import { Navbar, LandmarkDetail } from "@/components";
 
 type Props = {
