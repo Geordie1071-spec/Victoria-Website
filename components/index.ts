@@ -4,4 +4,5 @@ export { default as Navbar } from "./NavBar";
 export { default as Footer } from "./Footer";
 export { default as History } from "./HistoryMain";
 export { default as ReviewsMain } from "./ReviewsMain";
-export { default as LandmarkDetail } from "./LandmarkDetail"
+export { default as LandmarkDetail } from "./LandmarkDetail";
+export { default as HomeMain } from "./HomeMain";

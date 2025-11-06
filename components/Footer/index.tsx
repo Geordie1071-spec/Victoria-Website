@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import GradientText from "../GradientText";
 
 export default function Footer() {
   return (
@@ -14,7 +13,7 @@ export default function Footer() {
           viewport={{ once: true }}
         >
           <h3 className="text-4xl font-bold mb-4">
-            <GradientText>Discover Victoria, Gozo</GradientText>
+            Discover Victoria, Gozo
           </h3>
 
           <p className="text-yellow-400 text-lg mb-8 italic">
@@ -23,7 +22,6 @@ export default function Footer() {
 
           {/* Quick Navigation */}
           <div className="mb-6 space-x-4 text-sm">
-            <span className="text-yellow-600">·</span>
             <a
               href="/history"
               className="hover:text-yellow-200 transition-colors"

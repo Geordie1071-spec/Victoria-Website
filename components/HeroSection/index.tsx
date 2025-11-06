@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { MapPin } from "lucide-react";
-import GradientText from "../GradientText";
 import Image from "next/image";
 export default function HeroSection() {
   const ref = useRef(null);
@@ -60,7 +59,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
         >
-          <GradientText>Victoria Gozo</GradientText>
+          Victoria Gozo
         </motion.h1>
 
         <motion.p

@@ -1,9 +1,9 @@
-import HomeClient from "@/components/HomeClient";
+import { HomeMain } from "@/components";
 
 export default function Home() {
   return (
     <main className="bg-white">
-      <HomeClient />
+      <HomeMain />
     </main>
   );
 }
