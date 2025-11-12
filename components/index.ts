@@ -6,3 +6,5 @@ export { default as History } from "./HistoryMain";
 export { default as ReviewsMain } from "./ReviewsMain";
 export { default as LandmarkDetail } from "./LandmarkDetail";
 export { default as HomeMain } from "./HomeMain";
+export { default as VictoriaMap } from "./VictoriaMap";
+export { default as VictoriaWeather } from "./VictoriaWeather";

@@ -1,6 +1,12 @@
 "use client";
 
-import { LandmarkSection, HeroSection, Navbar, Footer } from "@/components";
+import {
+  LandmarkSection,
+  HeroSection,
+  Navbar,
+  Footer,
+  VictoriaWeather,
+} from "@/components";
 import { landmarks } from "@/data/landmarks";
 
 export default function HomeClient() {
@@ -11,6 +17,7 @@ export default function HomeClient() {
       {landmarks.map((landmark, index) => (
         <LandmarkSection key={landmark.id} landmark={landmark} index={index} />
       ))}
+      <VictoriaWeather />
       <Footer />
     </>
   );
