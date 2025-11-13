@@ -1,5 +1,5 @@
 import { Review } from "@/app/api/reviews/route";
-import { Navbar, ReviewsMain } from "@/components";
+import { ReviewsMain } from "@/components";
 
 async function getReviews(): Promise<Review[]> {
   try {
@@ -23,7 +23,6 @@ export default async function ReviewsPage() {
 
   return (
     <>
-      <Navbar />
       <ReviewsMain initialReviews={initialReviews} />
     </>
   );

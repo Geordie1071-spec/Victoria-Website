@@ -18,6 +18,8 @@ export const landmarks = [
       visitorTips:
         "Entry to the Cittadella is free; individual museums require separate tickets. You should allow 1.5–2 hours or more to explore fully. The site is largely car-free; park outside the walls. Bring water and sun protection (many ramparts are exposed). Visit near sunset for dramatic lighting and fewer crowds.",
     },
+    lat: 36.04639,
+    lon: 14.23944,
   },
   {
     id: 2,
@@ -38,6 +40,8 @@ export const landmarks = [
       visitorTips:
         "This is an active parish church—mass and services take place, so check times if you want quieter access. Dress modestly (shoulders and knees covered) and photography may be restricted. A quick visit takes ~20–30 minutes if you don’t explore all nooks. Early morning or later afternoon visits offer softer light and fewer crowds.",
     },
+    lat: 36.04380,
+    lon: 14.23913,
   },
   {
     id: 3,
@@ -58,6 +62,8 @@ export const landmarks = [
       visitorTips:
         "It’s always open (public square). Good spot to pause when exploring Victoria. Be careful with cafés—sometimes tourist mark-ups. Use this as a navigation hub: many streets radiate from here into old Victoria.",
     },
+    lat: 36.044642,
+    lon: 14.239207,
   },
   {
     id: 4,
@@ -78,6 +84,8 @@ export const landmarks = [
       visitorTips:
         "Free entry, always open. Because it is adjacent to Republic Street, you might pass it en route to/from other sites. Best for a rest, picnic or leisurely stroll. Some parts are open to the sun—bring shade if midday. Near the gardens is the main car park and bus terminus, convenient for switching modes.",
     },
+    lat: 36.04322,
+    lon: 14.24313,
   },
   {
     id: 5,
@@ -98,6 +106,8 @@ export const landmarks = [
       visitorTips:
         "Access is via the Cittadella, usually with a museum ticket or combined pass. The prison is indoors (dimmer light)—bring a flashlight app or use ambient light. Take time to inspect and don’t rush. Some parts may be narrow or have low ceilings—watch your head.",
     },
+    lat: 36.04621,
+    lon: 14.23945,
   },
   {
     id: 6,
@@ -118,6 +128,8 @@ export const landmarks = [
       visitorTips:
         "The museum is part of the Cittadella museum circuit; a combo ticket often gives access to several museums including this one. Opening hours vary—check locally. Entry fees apply (student/senior discounts may be available). Expect to spend ~20-30 minutes (or more) depending on interest. Photography may be allowed but avoid flash for delicate objects.",
     },
+    lat: 36.04581,
+    lon: 14.23948,
   },
   {
     id: 7,
@@ -138,9 +150,11 @@ export const landmarks = [
       visitorTips:
         "This is an active cathedral—mass and liturgical services take place, so visit outside service times for quiet. Modest dress is required (shoulders and knees covered). Check museum opening hours if you want to visit the museum behind the cathedral. Photography may be restricted in certain areas. Even if you don’t enter, the façade and square are photogenic. Spend approx. 15-25 minutes inside if you intend to see the museum as well.",
     },
+    lat: 36.04622,
+    lon: 14.24003,
   },
   {
-    id: 10,
+    id: 8,
     name: "Triq ir-Repubblika (Republic Street)",
     slug: "republic-street",
     description:
@@ -158,5 +172,7 @@ export const landmarks = [
       visitorTips:
         "This is public and always open (as a street). Wear comfortable shoes—you may walk a lot. Best explored on foot. Using Republic Street you can access many landmarks sequentially. Be aware of peak business hours: some shops may close mid-afternoon.",
     },
+    lat: 36.04372,
+    lon: 14.24480,
   },
 ];

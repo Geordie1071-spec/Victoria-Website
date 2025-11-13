@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { landmarks } from "@/data/landmarks";
-import { Navbar, LandmarkDetail } from "@/components";
+import { LandmarkDetail, VictoriaMap  } from "@/components";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -16,8 +16,8 @@ export default async function LandmarkDetailPage({ params }: Props) {
 
   return (
     <>
-      <Navbar />
       <LandmarkDetail landmark={landmark} />
+      <VictoriaMap lat={landmark.lat.toString()} lon={landmark.lon.toString()} />
     </>
   );
 }

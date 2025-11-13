@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
-import { Open_Sans, Lora } from "next/font/google";
+import { Lora } from "next/font/google";
 import "./globals.css";
-
-const openSans = Open_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-open-sans',
-});
+import { Footer , Navbar} from "@/components";
 
 const lora = Lora({
   subsets: ['latin'],
@@ -28,7 +23,9 @@ export default function RootLayout({
       <body
         className={`${lora.variable}`}
       >
-        {children}
+        <Navbar />
+         <main>{children}</main> 
+        <Footer />
       </body>
     </html>
   );
