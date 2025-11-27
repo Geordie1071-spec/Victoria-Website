@@ -54,3 +54,32 @@ export async function fetchLandmarks() {
     description: el.tags.description || null,
   }));
 }
+
+export async function getNearbyAttractions(lat : string, lng: string, radius = 10 , maxRows = 20) {
+    const username = "geordie1071"; 
+
+    const params = new URLSearchParams({
+        lat ,
+        lng,
+        radius: radius.toString(),
+        maxRows: maxRows.toString(),
+        username
+    });
+
+    const url = `http://api.geonames.org/findNearbyWikipediaJSON?${params}`;
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`GeoNames request failed: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        return data.geonames ? data.geonames : [];
+        
+    } catch (error) {
+        console.error("Error fetching GeoNames data:", error);
+        return [];
+    }
+}
+

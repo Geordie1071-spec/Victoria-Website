@@ -18,8 +18,21 @@ type Landmark = {
   info: LandmarkInfo;
 };
 
+type nearbyAttraction = {
+  summary : string;
+  elevation : number;
+  lng : number;
+  distance : number;
+  countryCode : string;
+  rank : number;
+  title : string;
+  lat: number;
+  wikipediaUrl : string;
+}
+
 type Props = {
   landmark: Landmark;
+  nearbyAttractions?: nearbyAttraction[];
 };
 
 const sections = [
@@ -57,7 +70,7 @@ const sections = [
   },
 ];
 
-export default function LandmarkDetail({ landmark }: Props) {
+export default function LandmarkDetail({ landmark, nearbyAttractions }: Props) {
   const { name, description, image, info } = landmark;
 
   return (
@@ -127,6 +140,66 @@ export default function LandmarkDetail({ landmark }: Props) {
             );
           })}
         </div>
+
+        {/* Nearby Attractions Section */}
+        {nearbyAttractions && nearbyAttractions.length > 0 && (
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mt-10 sm:mt-14"
+          >
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+              Nearby Attractions
+            </h2>
+
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+              {nearbyAttractions.map((attraction, idx) => {
+                const rawDistance = attraction.distance;
+                const numericDistance =
+                  typeof rawDistance === "number"
+                    ? rawDistance
+                    : parseFloat(rawDistance ?? "NaN");
+
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.05, duration: 0.4 }}
+                    className="bg-white border border-gray-200 shadow-sm rounded-xl p-4 hover:shadow-lg transition-all"
+                  >
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      {attraction.title}
+                    </h3>
+
+                    <p className="text-gray-600 text-sm mt-1 line-clamp-3">
+                      {attraction.summary || "No summary available"}
+                    </p>
+
+                    {Number.isFinite(numericDistance) && (
+                      <div className="mt-3 text-sm text-gray-500">
+                        📍 {numericDistance.toFixed(1)} km away
+                      </div>
+                    )}
+
+                    {attraction.wikipediaUrl && (
+                      <a
+                        className="mt-3 inline-block text-blue-600 hover:underline font-medium text-sm"
+                        href={`https://${attraction.wikipediaUrl}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View on Wikipedia →
+                      </a>
+                    )}
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.section>
+        )}
+
 
         {/* Bottom CTA */}
         <motion.div
