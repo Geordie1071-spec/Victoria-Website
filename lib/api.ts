@@ -74,7 +74,7 @@ export async function getNearbyAttractions(lat : string, lng: string, radius = 1
         }
 
         const data = await response.json();
-
+        console.log("Fetched GeoNames data:", data);
         return data.geonames ? data.geonames : [];
         
     } catch (error) {
