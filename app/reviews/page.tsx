@@ -1,17 +1,19 @@
-import { Review } from "@/app/api/reviews/route";
 import { ReviewsMain } from "@/components";
+import { Review } from "@/types";
 
 async function getReviews(): Promise<Review[]> {
   try {
-    const response = await fetch("/api/reviews", {
+    const response = await fetch("http://localhost:5000/api/reviews", {
       cache: "no-store",
     });
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch reviews");
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Fetched reviews:", data);
+      return data;
     }
-
-    return response.json();
+    
+    throw new Error("Failed to fetch reviews");
+    
   } catch (error) {
     console.error("Error fetching reviews:", error);
     return [];

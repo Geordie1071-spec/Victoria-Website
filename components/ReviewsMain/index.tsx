@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Review } from "@/app/api/reviews/route";
+import { Review } from "@/types";
 
 interface ReviewsMainProps {
   initialReviews: Review[];
@@ -25,7 +25,7 @@ export default function ReviewsMain({ initialReviews }: ReviewsMainProps) {
 
     try {
       const response = await fetch(
-        "https://victoria-website-chi.vercel.app/api/reviews",
+        "http://localhost:5000/api/reviews",
         {
           method: "POST",
           headers: {
@@ -40,10 +40,12 @@ export default function ReviewsMain({ initialReviews }: ReviewsMainProps) {
 
       if (response.ok) {
         const newReview = await response.json();
+        console.log("Submitted review:", newReview);
         setReviews((prev) => [newReview, ...prev]);
         setName("");
         setReviewContent("");
       } else {
+        console.error("Failed to submit review:", response.statusText);
         alert("Failed to submit review");
       }
     } catch (error) {
